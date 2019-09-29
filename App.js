@@ -1,29 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Drinks from "./Drinks";
-import { DrinkDetails } from "./DrinkDetails";
-import { createStackNavigator } from "react-navigation";
-
-const DrinkStackNavigator = createStackNavigator({
-  Drinks,
-  DrinkDetails
-});
+import { store } from "./redux";
+import Todos from "./Todos";
+import { Provider } from "react-redux";
 
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <DrinkStackNavigator />
-      </View>
+      <Provider store={store}>
+        <View style={{ paddingTop: 25 }}>
+          <Todos />
+        </View>
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20
-  }
-});
 
 export default App;
